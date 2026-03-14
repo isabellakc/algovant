@@ -1,5 +1,3 @@
-# Algovant
-
 A quantitative research project analyzing price momentum strategies across 10 large-cap US stocks (1999–2025). Investigates factor returns, portfolio construction, earnings event studies, and robustness to transaction costs and market regimes.
 
 **Key finding:** A 12-1 month momentum long-short strategy generates +9.2% annualized gross returns (Sharpe 0.23), driven largely by Tech sector stocks. Net return at 10 bps transaction costs is 8.1%. Strategy works in trending markets and fails during crises.
