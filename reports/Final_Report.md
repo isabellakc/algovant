@@ -27,6 +27,15 @@
 
 **Source:** Daily price data from Stooq, resampled to monthly
 
+![Normalized Price Series, Return Distribution, Volatility, and Portfolio Performance](figures/fig1_normalized_prices.png)
+*Figure 1. Normalized price series (base = 1.0), last 10 years.*
+
+![Return Distribution](figures/fig2_return_distribution.png)
+*Figure 2. AAPL daily return distribution — mean 0.11%, negative skew, fat tails.*
+
+![Volatility](figures/fig3_volatility.png)
+*Figure 3. AAPL annualized rolling volatility (20-day and 252-day).*
+
 ### 1.2 Factor Construction
 
 **Momentum (12-1 Month):**
@@ -85,15 +94,27 @@ Each month:
 | Q5 (Winners) | 32.1% | 41.7% | 0.77 | $1 → $203 |
 | **L-S** | **9.2%** | **39.6%** | **0.23** | **$1 → $2.30** |
 
+![Momentum Score Distribution](figures/fig_momentum_distribution.png)
+*Figure 4. Momentum score distribution — right-skewed, median 0.30, most stocks in positive territory.*
+
+![Momentum Quintile Performance](figures/fig_momentum_quintiles.png)
+*Figure 5. Cumulative returns by quintile (2013–2026). Clear monotonic spread — Q5 reaches ~200×, Q1 ~87×.*
+
 **Contrarian Results:**
 - L-S return: -14.5%, Sharpe -0.36, max DD -95%
 - Failed because recent losers kept losing (tech momentum dominated)
 
 **Correlation:** Momentum vs Contrarian = -0.89 (strong negative)
 
+![Long-Short Cumulative Returns](figures/fig_longshort_cumulative.png)
+*Figure 6. Momentum L-S (blue) vs Contrarian L-S (orange). Contrarian collapses to near zero while momentum peaks at ~2.25×.*
+
 **Year-by-Year:**
 - Momentum best: 2020 (+160%), worst: 2019 (-42%)
 - Positive in 8/13 years
+
+![Year-by-Year Factor Returns](figures/fig_yearly_factor_returns.png)
+*Figure 7. Annual returns for Momentum vs Contrarian L-S strategies. Momentum's banner year was 2020 (+160%); contrarian shows persistent underperformance.*
 
 **Key Insight:** Clear monotonic momentum relationship; contrarian fails in momentum-driven markets
 
@@ -115,6 +136,9 @@ Each month:
 **Best Risk-Adjusted:** V (Sharpe 0.91), NVDA (0.95)  
 **Best Diversifier:** UNH (beta 0.48, correlations 0.05-0.17 with tech)
 
+![Stock Return Correlation Matrix](figures/fig_correlation_heatmap.png)
+*Figure 8. Return correlation matrix. UNH stands out as the best diversifier (correlations 0.05–0.19 vs tech).*
+
 **Diversification Benefit:**
 - 1 stock portfolio: 41.5% vol
 - 10-stock equal-weight: 27.4% vol
@@ -129,6 +153,15 @@ Each month:
 | Optimized (Max Sharpe) | 13.1% | 12.6% | **1.040** | **-40.9%** |
 
 **Optimal Weights:** UNH 23.9%, V 21.0%, META 12.6%, GOOGL 13.2%, AAPL 0%, JPM 0%
+
+![Equal-Weight vs Risk Parity](figures/fig_cumulative_ew_vs_rp.png)
+*Figure 9. Equal-weight vs Risk Parity cumulative returns (1999–present). Equal-weight leads in absolute return, driven by NVDA and TSLA exposure post-2019.*
+
+![All Three Portfolio Methods](figures/fig_cumulative_all_methods.png)
+*Figure 10. All three portfolio construction methods. Optimized (green) delivers the smoothest path; equal-weight (blue) the highest absolute return.*
+
+![Efficient Frontier](figures/fig_efficient_frontier.png)
+*Figure 11. Efficient frontier with 5,000 random portfolios. Stars mark equal-weight (red), risk parity (orange), and max Sharpe optimized (lime).*
 
 **Key Insight:** Equal-weight beat optimization in absolute returns (+24% vs +13%) by maintaining exposure to volatile winners (NVDA, TSLA). Optimizer underweighted these and missed 2020-2025 tech boom. But optimized had best Sharpe (1.04) and shallowest drawdown (-41%).
 
@@ -147,6 +180,9 @@ Each month:
 - No significant days
 - **Problem:** Positive and negative earnings cancel out (cancellation bias)
 
+![CAAR Mixed Sample](figures/fig_caar_mixed.png)
+*Figure 12. CAAR for all 45 events combined — positive and negative earnings cancel, resulting in a flat +0.6% with no significant days.*
+
 **Separated by Direction:**
 
 **Positive Earnings (CAR > 0, n=24):**
@@ -159,6 +195,9 @@ Each month:
 - Day +1 AAR: -2.7% (t=-3.53, p<0.001) ***
 - Days +2, +3 also significant
 - 3 significant days total
+
+![CAAR by Direction](figures/fig_caar_comparison.png)
+*Figure 13. CAAR separated by direction. Positive earnings (green) plateau at +5.4%; negative (red) drift to -4.8% with stronger persistence. Mixed sample (gray) hides both effects.*
 
 **Key Findings:**
 1. **Delayed reaction:** Most movement Day +1 (after-hours announcements)
@@ -189,6 +228,9 @@ Each month:
 
 **Key Finding:** At 10 bps (institutional rate), costs reduce returns by 12%. Strategy remains profitable even at 50 bps (+3.8% net).
 
+![Gross vs Net Returns](figures/fig_gross_vs_net_10bps.png)
+*Figure 14. Gross vs net (10 bps) cumulative returns for Q5, Q1, and L-S. The gap widens over time as cost drag compounds.*
+
 #### Sub-Period Analysis
 
 | Period | Ann. Return | Sharpe | Market Regime |
@@ -206,7 +248,10 @@ Each month:
 | **Tech** | 6 | **+23.2%** | **0.447** |
 | Finance | 2 | -4.9% | -0.203 |
 
-**Key Finding:** All returns driven by 6 tech stocks. Finance shows negative momentum. This is really "tech momentum" not broad momentum.
+![Momentum Returns by Sector](figures/fig_sector_returns.png)
+*Figure 15. Momentum L-S returns by sector. All alpha comes from tech; finance shows negative momentum.*
+
+**Key Finding:** All returns driven by 6 tech stocks. Finance shows negative momentum. This is really tech momentum not broad momentum.
 
 #### Parameter Sensitivity
 
@@ -218,6 +263,9 @@ Each month:
 | **6-1** | 0.358   | 0.053     |
 | **9-1** | 0.269   | -0.070    |
 | **12-1** | **0.421** | -0.078  |
+
+![Parameter Sensitivity Heatmap](figures/fig_parameter_sensitivity_heatmap.png)
+*Figure 16. Sharpe ratio heatmap across lookback × rebalancing frequency. 12-1 monthly dominates (0.421); quarterly rebalancing destroys value for longer lookbacks.*
 
 **Key Findings:**
 - **Best:** 12-1 monthly (Sharpe 0.42)
