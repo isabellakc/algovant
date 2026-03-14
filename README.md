@@ -5,7 +5,6 @@ A quantitative research project analyzing price momentum strategies across 10 la
 ---
 
 ## Project Structure
-
 ```
 algovant/
 ├── utils.py                                # Data loading utilities
@@ -19,9 +18,10 @@ algovant/
 │   ├── event_study.ipynb                   # Earnings announcement analysis
 │   └── transaction_costs_robustness.ipynb  # Cost sensitivity and robustness tests
 └── reports/
+    ├── figures/                            # All generated plots (saved by notebooks)
     ├── data_cleaning_report.md
     ├── factor_memo.md
-    └── final_report.md
+    └── final_report.md                     # Main report with embedded figures
 ```
 
 ---
@@ -29,9 +29,8 @@ algovant/
 ## How to Run
 
 **Requirements:** Python 3.9+
-
 ```bash
 pip install -r requirements.txt
 ```
 
-Then run the notebooks in order — each builds on the data and variables from the previous one. Data loads automatically from `data/daily/us/` via `utils.py` (source: [Stooq](https://stooq.com)).
+Then run the notebooks in order — each builds on the data and variables from the previous one. Data loads automatically from `data/daily/us/` via `utils.py` (source: [Stooq](https://stooq.com)). Figures are saved automatically to `reports/figures/` when each notebook is run.
